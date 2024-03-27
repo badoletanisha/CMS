@@ -29,6 +29,7 @@ public class User {
 	private String username;
 	private String email;
 	private String password;
+	private boolean deleted;
 	
 	@Column(updatable = false)
 	@CreatedDate
@@ -102,6 +103,16 @@ public class User {
 	public User setUsername(String username) {
 		this.username = username;
 		return this;
+	}
+
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 

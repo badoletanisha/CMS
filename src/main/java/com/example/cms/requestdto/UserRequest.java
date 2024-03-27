@@ -17,6 +17,7 @@ public class UserRequest {
 			+ " contain at least one letter, one number, one special character")
 	private String password;
 	
+	
 	public int getUserId() {
 		return userId;
 	}

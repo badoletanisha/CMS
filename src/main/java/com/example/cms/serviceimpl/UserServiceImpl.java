@@ -8,12 +8,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.example.cms.entity.User;
 import com.example.cms.exception.UserAlreadyExistByEmailException;
+import com.example.cms.exception.UserNotFoundException;
 import com.example.cms.repository.UserRepo;
 import com.example.cms.requestdto.UserRequest;
 import com.example.cms.responsedto.UserResponse;
 import com.example.cms.service.UserService;
 import com.example.cms.utility.ResponseStructure;
-
 
 
 
@@ -68,11 +68,40 @@ public class UserServiceImpl implements UserService{
 		userResponse.setUserId(user.getUserId());
 		userResponse.setUsername(user.getUsername());
 		userResponse.setEmail(user.getEmail());
+		userResponse.setCreatedAt(user.getCreatedAt());
+		userResponse.setLastModifiedAt(user.getLastModifiedAt());
 		return userResponse;
 
 
-	}			
+	}
 
+	@Override
+	public ResponseEntity<ResponseStructure<UserResponse>> findUser(int userId) {
+		return	userRepo.findById(userId).map(user->ResponseEntity.ok(structure.setStatus(HttpStatus.OK.value())
+				.setMessage("User Found")
+				.setBody(mapToUserResponse(user))))
+				.orElseThrow(()->new UserNotFoundException("User Not Exist"));
+		 
+	}
+
+
+
+	@Override
+	public ResponseEntity<ResponseStructure<UserResponse>> deleteByUserId(int userId ) {
+  		return userRepo.findById(userId).map(user ->{
+  			user.setDeleted(true);
+  			User uniqueUser = userRepo.save(user);
+  			return ResponseEntity.ok(structure.setStatus(HttpStatus.OK.value())
+  					.setMessage("user found and will be deleted in 30 days")
+  					.setBody(mapToUserResponse(uniqueUser)));
+  		})
+  				.orElseThrow(()-> new UserNotFoundException("user does not exist"));
+	}
+
+
+
+
+	
 
 
 

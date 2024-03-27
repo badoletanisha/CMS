@@ -1,9 +1,12 @@
 package com.example.cms.contoller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -33,5 +36,17 @@ public class UserController {
 	@GetMapping("/test")
 	public String tst() {
 		return "hellow from cms";
+	}
+	
+	@GetMapping("/users/findUserById/{userId}")
+	public ResponseEntity<ResponseStructure<UserResponse>> findUser(@PathVariable("userId") int userId){
+		return userservice.findUser(userId);
+		
+	}
+	
+	
+	@DeleteMapping("/users/deleteByUserId/{userId}")
+	public ResponseEntity<ResponseStructure<UserResponse>> deleteByUserId(@PathVariable("userId") int UserId){
+		return userservice.deleteByUserId(UserId);
 	}
 }
