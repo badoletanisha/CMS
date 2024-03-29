@@ -1,6 +1,7 @@
 package com.example.cms.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -12,6 +13,7 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Builder;
 
@@ -30,15 +32,16 @@ public class User {
 	private String email;
 	private String password;
 	private boolean deleted;
-	
+
 	@Column(updatable = false)
 	@CreatedDate
 	private LocalDateTime createdAt;
-	
-	
+
+
 	@LastModifiedDate
 	private LocalDateTime lastModifiedAt;
 
+	
 
 	public int getUserId() {
 		return userId;
@@ -117,13 +120,16 @@ public class User {
 
 
 	
-	
-	
 
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 
 
 }

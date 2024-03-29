@@ -25,7 +25,7 @@ public class SecurityConfig {
 //cross side request forgery->csrf
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-		return httpSecurity.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> auth.requestMatchers("/users/register")
+		return httpSecurity.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> auth.requestMatchers("/users/register","/users/{userId}/blogs")
 				.permitAll().anyRequest().authenticated())
 				.formLogin(Customizer.withDefaults()).build();
 	}
