@@ -1,15 +1,19 @@
 package com.example.cms.entity;
 
-import java.util.List;
+
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -25,9 +29,12 @@ public class Blog {
 	private String[] topics;
 	private String about;
 
-	@ManyToMany
-	private List<User> users;
+	@ManyToOne @JsonIgnore
+	private User users;
 
+     @OneToOne 
+	private ContributionPanel contributionPanel;
+	
 	public int getBlogId() {
 		return blogId;
 	}
@@ -60,13 +67,23 @@ public class Blog {
 		this.about = about;
 	}
 
-	public List<User> getUsers() {
+	public User getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<User> users) {
+	public void setUsers(User users) {
 		this.users = users;
 	}
+
+	public ContributionPanel getContributionPanel() {
+		return contributionPanel;
+	}
+
+	public void setContributionPanel(ContributionPanel contributionPanel) {
+		this.contributionPanel = contributionPanel;
+	}
+
+	
 
 	
 

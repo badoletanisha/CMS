@@ -1,10 +1,10 @@
 package com.example.cms.exception;
 
 @SuppressWarnings("serial")
-public class BlogNotFoundByIdExcption extends RuntimeException{
+public class UserNotExistByIdInPanel extends RuntimeException {
 private String message;
 
-public BlogNotFoundByIdExcption(String message) {
+public UserNotExistByIdInPanel(String message) {
 	super();
 	this.message = message;
 }

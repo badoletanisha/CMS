@@ -3,16 +3,15 @@ package com.example.cms.contoller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.cms.entity.Blog;
 import com.example.cms.requestdto.BlogRequest;
 import com.example.cms.responsedto.BlogResponse;
 import com.example.cms.service.BlogService;
 import com.example.cms.utility.ResponseStructure;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -41,7 +40,7 @@ public class BlogController {
 		return  blogService.findBlogById(blogId);
 	}
 	
-	@GetMapping("/blogs/{blogId}")
+	@PutMapping("/blogs/{blogId}")
 	public ResponseEntity<ResponseStructure<BlogResponse>> updateBlog(@RequestBody BlogRequest blogRequest,@PathVariable int blogId) {
 		return blogService.updateBlog(blogRequest,blogId);
 	}

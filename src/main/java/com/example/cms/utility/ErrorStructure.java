@@ -2,11 +2,10 @@ package com.example.cms.utility;
 
 import org.springframework.stereotype.Component;
 
-import lombok.Getter;
 
 
 @Component
-@Getter
+
 public class ErrorStructure<T> {
 	
 	
@@ -21,6 +20,12 @@ public class ErrorStructure<T> {
 		return this;
 	}
 	
+	public String getMessage() {
+		return message;
+	}
+	public T getRootCouse() {
+		return rootCouse;
+	}
 	public ErrorStructure<T> setMessage(String message) {
 		this.message = message;
 		return this;

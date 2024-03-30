@@ -1,10 +1,10 @@
 package com.example.cms.exception;
 
 @SuppressWarnings("serial")
-public class TopicNotSpecificationException extends RuntimeException {
+public class IllegalAccessRequestException extends RuntimeException {
 	private String message;
 
-	public TopicNotSpecificationException(String message) {
+	public IllegalAccessRequestException(String message) {
 		super();
 		this.message = message;
 	}
@@ -12,6 +12,5 @@ public class TopicNotSpecificationException extends RuntimeException {
 	public String getMessage() {
 		return message;
 	}
-	
 
 }

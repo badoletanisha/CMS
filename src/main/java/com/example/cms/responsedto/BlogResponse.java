@@ -1,9 +1,8 @@
 package com.example.cms.responsedto;
 
 
-import java.util.List;
 
-import com.example.cms.entity.User;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,7 +16,6 @@ public class BlogResponse {
 	private String title;
 	private String[] topics;
 	private String about;
-	private List<User> users;
 	public int getBlogId() {
 		return blogId;
 	}
@@ -42,12 +40,7 @@ public class BlogResponse {
 	public void setAbout(String about) {
 		this.about = about;
 	}
-	public List<User> getUsers() {
-		return users;
-	}
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
+	
 	
 	
 	

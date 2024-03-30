@@ -13,7 +13,7 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Builder;
 
@@ -33,6 +33,10 @@ public class User {
 	private String password;
 	private boolean deleted;
 
+
+	@OneToMany(mappedBy = "users")
+	private List<Blog> blog;
+	
 	@Column(updatable = false)
 	@CreatedDate
 	private LocalDateTime createdAt;
@@ -117,6 +121,19 @@ public class User {
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
 	}
+
+
+	public List<Blog> getBlog() {
+		return blog;
+	}
+
+
+	public void setBlog(List<Blog> blog) {
+		this.blog = blog;
+	}
+
+
+	
 
 
 	
