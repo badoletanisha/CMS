@@ -8,6 +8,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public class UserAlreadyExistByEmailException extends RuntimeException{
 
+	@SuppressWarnings("unused")
 	private String message;
 	
 	public UserAlreadyExistByEmailException(String message) {

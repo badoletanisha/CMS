@@ -6,12 +6,10 @@ import org.springframework.stereotype.Component;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,8 +21,8 @@ public class UserResponse {
 	private String email;
 	private LocalDateTime createdAt; 
 	private LocalDateTime lastModifiedAt;
-	
-	
+
+
 
 	public int getUserId() {
 		return userId;
@@ -70,32 +68,32 @@ public class UserResponse {
 		this.lastModifiedAt = lastModifiedAt;
 		return this;
 	}
-	
 
-	 public static Builder builder() {
-	        return new Builder();
-	    }
 
-	    public static class Builder {
-	        private Long userId;
-	        private String username;
-	        private String email;
+	public static Builder builder() {
+		return new Builder();
+	}
 
-	        private Builder() {}
+	public static class Builder {
+		private Long userId;
+		private String username;
+		private String email;
 
-	        public Builder userId(Long userId) {
-	            this.userId = userId;
-	            return this;
-	        }
+		private Builder() {}
 
-	        public Builder username(String username) {
-	            this.username = username;
-	            return this;
-	        }
+		public Builder userId(Long userId) {
+			this.userId = userId;
+			return this;
+		}
 
-	        public Builder email(String email) {
-	            this.email = email;
-	            return this;
-	        }
-}
+		public Builder username(String username) {
+			this.username = username;
+			return this;
+		}
+
+		public Builder email(String email) {
+			this.email = email;
+			return this;
+		}
+	}
 }
