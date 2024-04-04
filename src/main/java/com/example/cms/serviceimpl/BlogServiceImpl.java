@@ -28,8 +28,7 @@ public class BlogServiceImpl implements BlogService{
 	private ResponseStructure<BlogResponse> structure;
 
 	private ContributionPanelRepo contributionPanelRepo;
-
-	@Autowired
+@Autowired
 	public BlogServiceImpl(BlogRepo blogRepo, UserRepo userRepo, ResponseStructure<BlogResponse> structure,
 			ContributionPanelRepo contributionPanelRepo) {
 		super();

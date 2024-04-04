@@ -2,6 +2,7 @@ package com.example.cms.serviceimpl;
 
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,7 +31,7 @@ public class ContributionPanelServiceImpl implements ContributionPanelService {
 	User owner;
 	ContributionPanel panel;
 
-
+    @Autowired
 	public ContributionPanelServiceImpl(ContributionPanelRepo contributionPanelRepo,UserRepo userRepo,BlogRepo blogRepo,ResponseStructure<ContributionPanel> structure) {
 		super();
 		this.contributionPanelRepo = contributionPanelRepo;
