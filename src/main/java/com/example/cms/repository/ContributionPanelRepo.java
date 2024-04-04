@@ -9,5 +9,7 @@ public interface ContributionPanelRepo extends JpaRepository<ContributionPanel, 
 
 
 	boolean existsByContributers(User contributor);
+	
+	boolean existsByPanelIdAndContributers(int panelId, User user);
 
 }
